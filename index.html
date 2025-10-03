@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S A H H A - Architectural & Interior Design Firm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="imgSrc/FavLogo.jpg" type="image/x-icon"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"><style>
+        /* Define the primary accent color for SAHHA */
+        :root {
+            --primary-color: #a10f02; /* Main color - Deep red */
+            --secondary-color: #ECB012; /* Main color - Gold */
+            --dark-text: #000000; /* Main color - Black */
+            --light-bg: #FFFFFF; /* Sub color - White */
+            --accent-color: #DEBC48; /* Sub color - Light gold */
+        }
+
+        a { color: var(--dark-text); text-decoration: none; }
+        a:hover { color: var(--primary-color) !important; text-decoration: none; }
+        a:active { color: var(--primary-color) !important; text-decoration: none; }
+        a:visited { color: var(--dark-text); text-decoration: none; }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+        }
+
+        /* Hero Text Style */
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 4.0rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        /* Hero Section Responsive Behavior */
+        .hero-section {
+            display: flex;
+        }
+        
+        /* Hide hero section on mobile devices */
+        @media (min-width: 768px) {
+            .hero-section {
+                display: none;
+            }
+        }
+        
+        /* Navbar Adjustments */
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-text) !important;
+        }
+
+        /* About Section */
+        #About_Architects-title {
+            color: var(--primary-color) !important;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        /* Testimonials Section Styling */
+        #testimonials {
+            background-color: #f7f7f7; /* Light background for contrast */
+            padding: 5rem 2rem;
+        }
+        #testimonials-title {
+            color: var(--dark-text);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        .testimonial-item {
+            padding: 40px;
+            border-radius: 8px;
+            background: var(--light-bg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        .testimonial-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            filter: invert(1) grayscale(100) brightness(0.5); /* Darken controls */
+        }
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+        }
+
+
+        /* Service Icons/Images Container */
+        #services .service-icon-container {
+            height: 100px; 
+            width: 100px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-size: 3rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #services .service-item:hover .service-icon-container {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Contact Badge */
+        #experience-badge {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Project card text styling (Applies to span within overlay div) */
+        #projects .row a div span {
+            font-size: 1.2rem;
+            word-break: break-word; 
+            white-space: normal;
+            padding: 0 10px; /* Ensure some padding */
+        }
+
+        /* ⭐️ NEW: Horizontal Scroll Wrapper for Projects Section */
+        .project-scroll-wrapper {
+            overflow-x: auto; /* Enable horizontal scrolling */
+            -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+            padding-bottom: 10px; /* Space for scrollbar */
+        }
+        /* Style for the project cards within the scrolling area on small screens */
+        .project-scroll-wrapper .row a {
+            /* Force cards not to stack and define a width for scrolling */
+            flex-shrink: 0;
+            width: 280px; 
+            margin: 0 10px 20px; 
+            padding: 0;
+            display: block;
+        }
+        /* Override default Bootstrap margin for a cleaner scroll experience */
+        .project-scroll-wrapper .row {
+            margin-left: 0;
+            margin-right: 0;
+            justify-content: flex-start !important;
+        }
+
+        /* General Responsive Styles */
+        @media (min-width: 993px) {
+            /* Desktop and larger screens */
+            .hero-text {
+                font-size: 2.6rem;
+                transform: translateY(-230%) translateX(-50%) !important;
+                color: rgb(0, 0, 0) !important;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0) !important;
+            }
+            /* Disable fixed width on desktop so it uses 4 columns */
+            .project-scroll-wrapper .row a {
+                width: auto;
+                margin: 0;
+            }
+        }
+        @media (max-width: 992px) {
+            /* Tablet/Small Desktop */
+            .navbar-collapse {
+                justify-content: flex-start !important; /* Adjust for better mobile alignment */
+            }
+            .navbar-nav {
+                margin-left: 0 !important;
+            }
+            .hero-text {
+                font-size: 1.7rem;
+                transform: translateY(-525%) translateX(-50%) !important;
+                color: rgb(0, 0, 0) !important;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0) !important;
+            }
+        }
+        @media (max-width: 768px) {
+            /*Tablet/Large Phone*/
+            .hero-text {
+                font-size: 2.6rem;
+                transform: translateY(-230%) translateX(-50%) !important;
+                color: rgb(0, 0, 0) !important;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0) !important;
+            }
+            /* Mobile project card text adjustments */
+            #projects .row a div span {
+                font-size: 0.9rem; /* Smaller font for better fit on small screens */
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 576px) {
+            .hero-text {
+                font-size: 1.0rem;
+                transform: translateY(-580%) translateX(-160%) !important;
+                color: rgb(0, 0, 0) !important;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0) !important;
+            }
+          }
+        
+        /* Mobile Specific Adjustments */
+        @media (max-width: 768px) {
+            #About_Architects-MainCard {
+                flex-direction: column;
+                text-align: center;
+            }
+            #About_Architects-AboutArchitects {
+                text-align: center !important;
+            }
+            #About_Architects img {
+                margin-bottom: 20px;
+            }
+            #Contact_Us section {
+                flex-direction: column;
+            }
+            #Contact_Us > section > div {
+                max-width: 100% !important;
+            }
+            #experience-badge {
+                bottom: -20px !important;
+                right: 50% !important;
+                transform: translateX(50%) !important;
+                width: 100px !important;
+                height: 100px !important;
+                font-size: 1rem !important;
+            }
+            #experience-badge div:first-child {
+                font-size: 1.2rem !important;
+            }
+            footer {
+                text-align: center;
+            }
+            footer .col-md-4 {
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            footer .d-flex.justify-content-end {
+                justify-content: center !important;
+            }
+        }
+    </style>
+</head>
+<body style="height: 100vh;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="background-color: #ffffff !important; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);">
+        <div class="container-fluid container">
+            <a class="navbar-brand" href="#" style="font-size: 1.5rem;">
+                <img src="imgSrc/logo.jpg" alt="SAHHA Logo" width="150" height="50" class="d-inline-block align-text-top me-2" style="border-radius: 50%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: flex-end;">
+                <ul class="navbar-nav mb-2 mb-lg-0" id="navbar" style="list-style: none;">
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link" href="#About_Architects">Our Vision</a>
+                    </li>
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link" href="#Contact_Us">Enquiry</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="hero-section" style="width: 100%; height: 60vh; min-height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: var(--light-bg); position: relative;">
+        <img src="imgSrc/Apartment Bilekali.jpg" alt="SAHHA Hero Image" style="width: 130%; height: 100%; object-fit: cover; object-position: left top; transform: translateY(0%);">
+        <!--<div class="hero-text">
+            S A H H A
+            <div style="font-size: 0.4em; font-weight: 300; margin-top: 10px; font-family: 'Montserrat', sans-serif;">Thoughtful & Purposeful Design</div>
+        </div>-->
+    </div>
+    <div id="About_Architects" style="text-align: center; padding: 5rem 2rem; background-color: var(--light-bg);">
+        <div id="About_Architects-Card" style="max-width: 1000px; margin: auto;">
+            <h1 id="About_Architects-title" style="font-size: 2.5rem; margin-bottom: 30px;">
+                OUR DESIGN PHILOSOPHY
+            </h1>
+            <div id="About_Architects-MainCard" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;">
+                
+                <div id="About_Architects-AboutArchitects" style="flex: 1; text-align: left; font-size: 1rem; color: var(--dark-text); line-height: 1.8;">
+                    <p>
+                        S A H H A is an architectural & interiors design firm headed by Ar. Pavan Kumar & Ar. Naveen B. G, registered architects from Council of Architecture & Bangalore Mahanagara Palike.
+                    </p>
+                    <p>
+                        We strive for an architecture/interiors that are thoughtful and purposeful. We create functional solutions that are emotive and evocative; spirited, graceful and imbued with whimsy, wit and optimism.
+                    </p>
+                    <p>
+                        Our design celebrates the simplicity of elemental materials, the truth of nature, our bodies’ movement through spaces, and the delight of the sun’s animating light. Our work is dynamic, imaginative, environmentally sustainable, and technologically advanced, committed to empowering our clients while addressing local contexts and regional programs.
+                    </p>
+                    <p style="font-style: italic; color: var(--primary-color);">
+                        "Our design strength lies in fitting buildings to the land and paying special attention to the craft of assembling materials. We seek to celebrate the extraordinary within the ordinary."
+                    </p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <img src="imgSrc/logo.jpg" alt="Architects Pavan Kumar & Naveen B. G" style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                    <h5 style="margin-top: 15px; font-weight: 600;">Ar. Pavan Kumar & Ar. Naveen B. G</h5>
+                    <p style="font-size: 0.9rem; color: #666;">Registered Architects & Founders</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    <section id="testimonials">
+        <div class="container">
+            <h1 id="testimonials-title" class="text-center">CLIENT TESTIMONIALS</h1>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" style="max-width: 800px; margin: auto;">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-item">
+                            <i class="fas fa-quote-left" style="color: var(--secondary-color); font-size: 2rem; margin-bottom: 15px;"></i>
+                            <p class="testimonial-quote">"SAHHA brought our dream home to life with their thoughtful and purposeful design. Their attention to detail, from the initial sketch to the final execution, was impeccable. Truly exceptional architects!"</p>
+                            <p class="testimonial-author">— Mr. A. Sharma, Residential Client</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-item">
+                            <i class="fas fa-quote-left" style="color: var(--secondary-color); font-size: 2rem; margin-bottom: 15px;"></i>
+                            <p class="testimonial-quote">"The team delivered a dynamic and imaginative interior design for our restaurant. The space is not only beautiful but also incredibly functional, exceeding all our commercial expectations."</p>
+                            <p class="testimonial-author">— Babai Restaurant Management</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-item">
+                            <i class="fas fa-quote-left" style="color: var(--secondary-color); font-size: 2rem; margin-bottom: 15px;"></i>
+                            <p class="testimonial-quote">"We appreciated their commitment to sustainable and technologically advanced solutions. The structural engineering support was flawless, ensuring a smooth and timely project completion."</p>
+                            <p class="testimonial-author">— Mrs. R. Gowda, Independent Project</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    <section id="services" style="padding: 50px 20px; background-color: #fff;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-size: 2.5rem; font-weight: bold; color: var(--dark-text);">Our Professional Services</h1>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 service-item" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div class="service-icon-container">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <h3 style="margin-top: 10px; font-size: 1.1rem; font-weight: bold; color: var(--dark-text);">Architectural work & Site Development</h3>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 service-item" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div class="service-icon-container">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3 style="margin-top: 10px; font-size: 1.1rem; font-weight: bold; color: var(--dark-text);">Interior Designing</h3>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 service-item" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div class="service-icon-container">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                    </div>
+                    <h3 style="margin-top: 10px; font-size: 1.1rem; font-weight: bold; color: var(--dark-text);">Structural Engineering Works</h3>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 service-item" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div class="service-icon-container">
+                        <i class="fa-solid fa-plug"></i>
+                    </div>
+                    <h3 style="margin-top: 10px; font-size: 1.1rem; font-weight: bold; color: var(--dark-text);">PHE & Electrical Works</h3>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 service-item" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div class="service-icon-container">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 style="margin-top: 10px; font-size: 1.1rem; font-weight: bold; color: var(--dark-text);">Site Evaluation & Analysis</h3>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 service-item" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div class="service-icon-container">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                    <h3 style="margin-top: 10px; font-size: 1.1rem; font-weight: bold; color: var(--dark-text);">Immovable Assets Valuation</h3>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 service-item" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div class="service-icon-container">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 style="margin-top: 10px; font-size: 1.1rem; font-weight: bold; color: var(--dark-text);">Environmental Impact Assessment</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+<section id="projects" style="padding: 50px 20px; background-color: var(--light-bg);">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h1 style="font-size: 2.5rem; font-weight: bold; color: var(--dark-text);">Featured Projects</h1>
+    </div>
+    <div class="container">
+        <div class="project-scroll-wrapper" style="overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px;">
+            <div class="row" style="flex-wrap: nowrap; margin-left: 0; margin-right: 0; justify-content: flex-start;">
+                <a href="all-projects.html#residential-villas" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
+                   style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
+                    <img src="imgSrc/Villa Ramchandra Eagleton.jpg" alt="Project 1" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.3s;">
+                        <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Residential Villa</span>
+                    </div>
+                </a>
+                <a href="all-projects.html#restaurants" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
+                   style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
+                    <img src="imgSrc/Babai Restaurant Kurnool.jpg" alt="Project 2" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.3s;">
+                        <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Restaurant</span>
+                    </div>
+                </a>
+                <a href="all-projects.html#commercial-complexes" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
+                   style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
+                    <img src="imgSrc/Commercial Sadashiv Mudinapalya.jpg" alt="Project 2" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.3s;">
+                        <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Commercial Complex</span>
+                    </div>
+                </a>
+                <a href="all-projects.html#interior-design" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
+                   style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
+                    <img src="imgSrc/interiors/Mallikarjun residence Living.jpg" alt="Project 3" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.3s;">
+                        <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Interior Design</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="all-projects.html" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">View All Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+    <div id="Contact_Us" class="container" style="position: relative; padding: 50px 20px; margin-top: 20px;">
+        <section style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px; position: relative;">
+            <div style="flex: 1 1 300px; max-width: 450px; text-align: center; position: relative;">
+                <img src="imgSrc/blueprint_png.png" alt="Blueprint Image" style="width: 100%; border-radius: 5px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+
+                <div id="experience-badge" style="display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; width: 150px; height: 150px; border-radius: 50%; font-size: 1.5rem; font-weight: bold; position: absolute; bottom: 130px; right: 0px;">
+                    <div>20+</div>
+                    <div style="font-size: 0.9rem; font-weight: normal; text-align: center;">Years of Experience</div>
+                </div>
+            </div>
+
+            <div style="flex: 1 1 400px; max-width: 600px; background-color: var(--light-bg); padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <h2 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px; text-align: center; font-weight: 700;">Let's Talk About Your Project</h2>
+                <form id="consultationForm">
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-6">
+                            <input type="text" id="fullName" placeholder="Full Name *" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="tel" id="phoneNumber" placeholder="Phone Number *" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+                    <input type="email" id="email" placeholder="Email Address *" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                    <input type="text" id="subject" placeholder="Project Type (e.g., Residential, Commercial) *" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                    <textarea id="message" placeholder="Project Details and Requirements" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; height: 120px;"></textarea>
+                    <button type="button" onclick="sendWhatsAppMessage()" style="background-color: var(--primary-color); color: white; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; text-transform: uppercase; width: 100%; font-weight: 600; transition: background-color 0.3s;">Submit Enquiry</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center border-top" style="padding: 1.5rem 0rem 1.5rem 0rem !important;">
+            <div class="col-md-4 d-flex justify-content-start">
+                <p style="margin: 0; font-size: 0.85rem; color: #555;">© 2025 SAHHA. All rights reserved.</p>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <img src="imgSrc/logo.jpg" alt="SAHHA Logo" width="150" height="50" style="margin-bottom: 5px; border-radius: 50%;">
+                <p style="margin: 2px 0; font-size: 0.9rem;"><a href="https://maps.app.goo.gl/e7VaZBys66siFeZ57" target="_blank" style="color: var(--dark-text);"><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> Bangalore, India</a></p>
+                <p style="margin: 2px 0; font-size: 0.9rem;">
+                    <a href="tel:+917411073058" style="color: var(--dark-text);">+91 XXXXX XXX58</a>
+                </p>
+                <p style="margin: 2px 0; font-size: 0.9rem;"><a href="mailto:SAHHA@gmail.com" style="color: var(--dark-text);">naveen@sahha.in</a></p>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-end">
+                <ul style="list-style: none; padding: 0; margin: 0; display: inline-flex; gap: 15px;">
+                    <li>
+                        <a href="https://wa.me/+917411073058" target="_blank" style="color: var(--dark-text);"><i class="fab fa-whatsapp" style="font-size: 28px;"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" style="color: var(--dark-text);"><i class="fab fa-linkedin" style="font-size: 28px;"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <a href="#" id="back-to-top" style="position: fixed; bottom: 20px; right: 20px; z-index: 99; display: none; align-items: center; justify-content: center; width: 45px; height: 45px; background-color: var(--primary-color); color: white; border-radius: 50%; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); text-decoration: none; font-size: 1.2rem;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <script>
+        // Placeholder for the architects' actual phone numbers
+        const phoneNumber = "7411073058";
+        // Assuming a second number for the iframe attempt, using the other number from the footer
+        const phoneNumber2 = "7411073045"; 
+
+        function sendWhatsAppMessage() {
+            // Get input values
+            const fullName = document.getElementById("fullName").value.trim();
+            const phoneNumber = document.getElementById("phoneNumber").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const subject = document.getElementById("subject").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            // Validate fields
+            if (!fullName || !phoneNumber || !email || !subject) {
+                alert("Please fill in all required fields (Name, Phone, Email, Project Type).");
+                return;
+            }
+
+            // Construct the WhatsApp message
+            const whatsappMessage = `Hello SAHHA! New consultation request from your website:\n\n` +
+                `*Name:* ${fullName}\n` +
+                `*Phone Number:* ${phoneNumber}\n` +
+                `*Email:* ${email}\n` +
+                `*Project Type:* ${subject || "N/A"}\n` +
+                `*Details:* ${message || "N/A"}`;
+
+            // Open first WhatsApp chat (User sees this)
+            const whatsappURL1 = `https://wa.me/+91${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.location.href = whatsappURL1; 
+        }
+
+        // Back-to-Top button logic
+        window.onscroll = function() {
+            var backToTopBtn = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        document.getElementById("back-to-top").addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // Active link highlighting
+        document.addEventListener("DOMContentLoaded", () => {
+            const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+            const updateActiveLink = () => {
+                // Added '#testimonials' to the sections list
+                const sections = ['#projects', '#services', '#testimonials', '#About_Architects', '#Contact_Us']; 
+                let currentActive = null;
+                const scrollPos = window.scrollY + 150; // Offset for better timing
+
+                sections.forEach(id => {
+                    const section = document.querySelector(id);
+                    if (section && section.offsetTop <= scrollPos) {
+                        currentActive = id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.style.color = 'var(--dark-text)';
+
+                    // Updated logic to check for the current active section including testimonials
+                    if (link.getAttribute("href") === currentActive) {
+                        link.classList.add('active');
+                        link.style.color = 'var(--primary-color)';
+                    } else if (currentActive === null && link.getAttribute("href") === "#") {
+                        // Highlight 'Home' if at the top
+                        link.classList.add('active');
+                        link.style.color = 'var(--primary-color)';
+                    }
+                });
+            };
+
+            // Initial check and scroll listener
+            updateActiveLink();
+            window.addEventListener("scroll", updateActiveLink);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

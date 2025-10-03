@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - S A H H A - Architectural & Interior Design Firm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="imgSrc/FavLogo.jpg" type="image/x-icon"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /* Define the primary accent color for SAHHA */
+        :root {
+            --primary-color: #a10f02; /* Main color - Deep red */
+            --secondary-color: #ECB012; /* Main color - Gold */
+            --dark-text: #000000; /* Main color - Black */
+            --light-bg: #FFFFFF; /* Sub color - White */
+            --accent-color: #DEBC48; /* Sub color - Light gold */
+        }
+
+        a { color: var(--dark-text); text-decoration: none; }
+        a:hover { color: var(--primary-color) !important; text-decoration: none; }
+        a:active { color: var(--primary-color) !important; text-decoration: none; }
+        a:visited { color: var(--dark-text); text-decoration: none; }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+        }
+
+        /* Navbar Adjustments */
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-text) !important;
+        }
+
+        /* Project Category Styles */
+        .category-title {
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .project-card {
+            position: relative;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .project-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        /* Contact Badge */
+        #experience-badge {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .footer-credit {
+            position: sticky;
+            bottom: 20px;
+            right: 10px;
+            font-size: 0.75rem;
+            color: #777; /* Subtle text color */
+            z-index: 1000;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif; /* Use a loaded font */
+        }
+
+        /* General Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                justify-content: flex-start !important; /* Adjust for better mobile alignment */
+            }
+            .navbar-nav {
+                margin-left: 0 !important;
+            }
+            footer {
+                text-align: center;
+            }
+            footer .col-md-4 {
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            footer .d-flex.justify-content-end {
+                justify-content: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="background-color: #ffffff !important; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);">
+        <div class="container-fluid container">
+            <a class="navbar-brand" href="index.html" style="font-size: 1.5rem;">
+                <img src="imgSrc/logo.jpg" alt="SAHHA Logo" width="150" height="50" class="d-inline-block align-text-top me-2" style="border-radius: 50%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: flex-end;">
+                <ul class="navbar-nav mb-2 mb-lg-0" id="navbar" style="list-style: none;">
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link active" aria-current="page" href="index.html#projects">Projects</a>
+                    </li>
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link" href="index.html#services">Services</a>
+                    </li>
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link" href="index.html#About_Architects">Our Vision</a>
+                    </li>
+                    <li class="nav-item mx-2" style="font-size: 1rem; font-weight: 500;">
+                        <a class="nav-link" href="index.html#Contact_Us">Enquiry</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 mb-4">
+        <h1 style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); text-align: center; font-family: 'Playfair Display', serif;">Our Projects</h1>
+        <p class="text-center mb-5">Explore our diverse portfolio of architectural and interior design projects</p>
+    </div>
+
+    <div class="container mb-5">
+        <section class="mb-5" id="residential-villas">
+            <h2 class="category-title">Residential Villas</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Villa Ramchandra Eagleton.jpg" alt="Residential Villa Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Villa Ramchandra - Eagleton</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Villa Narasimha Swisstown.jpg" alt="Residential Villa Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Villa Narasimha - Swisstown</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residence Abhishek Bellary.jpg" alt="Residential Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Residence Abhishek - Bellary</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residence Vijay Kalyan ngr.jpg" alt="Residential Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Residence Vijay - Kalyan Nagar</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residence Satish BSK.jpg" alt="Residential Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Residence Satish - BSK</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residence Manjunath Tataguni.jpg" alt="Residential Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Residence Manjunath - Tataguni</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" id="restaurants">
+            <h2 class="category-title">Restaurants</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Babai Restaurant Kurnool.jpg" alt="Restaurant Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Babai Restaurant - Kurnool</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Amaravathi restaurant.jpeg" alt="Restaurant Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Amaravathi Restaurant</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/interiors/Restaurant Amaravathi 1.jpg" alt="Restaurant Interior">
+                        <div class="project-overlay">
+                            <div class="project-title">Amaravathi Restaurant Interior</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" id="commercial-complexes">
+            <h2 class="category-title">Commercial Complexes</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Commercial Sadashiv Mudinapalya.jpg" alt="Commercial Complex Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Commercial Complex - Sadashiv Mudinapalya</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Commercial space Ramesh Balehonnur.jpg" alt="Commercial Space Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Commercial Space - Ramesh Balehonnur</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Hospital RS Reddy Kurnool.jpg" alt="Hospital Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Hospital - RS Reddy Kurnool</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Mixed use space Selladurrai Basveshwar ngr.jpg" alt="Mixed Use Space Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Mixed Use Space - Selladurrai Basveshwar Nagar</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Mixed use space Viswa Kurnool.jpg" alt="Mixed Use Space Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Mixed Use Space - Viswa Kurnool</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Mized use space Murthy Bilekali.jpg" alt="Mixed Use Space Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Mixed Use Space - Murthy Bilekali</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" id="interior-design">
+            <h2 class="category-title">Interior Design</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/interiors/Mallikarjun residence Living.jpg" alt="Interior Design Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Mallikarjun Residence - Living Room</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/interiors/Viswanth Living Kurnool.jpg" alt="Interior Design Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Viswanath Living - Kurnool</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/interiors/Residence Sheshapani MBR.jpg" alt="Interior Design Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Residence Sheshapani - Master Bedroom</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/interiors/Yelukuru Showroom (1).jpg" alt="Interior Design Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Yelukuru Showroom</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/interiors/Yelukuru Showroom (2).jpg" alt="Interior Design Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Yelukuru Showroom - Display Area</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/interiors/Yelukuru MD cabin (1).jpg" alt="Interior Design Project">
+                        <div class="project-overlay">
+                            <div class="project-title">Yelukuru MD Cabin</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center border-top" style="padding: 1.5rem 0rem 1.5rem 0rem !important;">
+            <div class="col-md-4 d-flex justify-content-start">
+                <p style="margin: 0; font-size: 0.85rem; color: #555;">© 2025 SAHHA. All rights reserved.</p>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <img src="imgSrc/logo.jpg" alt="SAHHA Logo" width="150" height="50" style="margin-bottom: 5px; border-radius: 50%;">
+                <p style="margin: 2px 0; font-size: 0.9rem;"><a href="https://maps.app.goo.gl/e7VaZBys66siFeZ57" target="_blank" style="color: var(--dark-text);"><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> Bangalore, India</a></p>
+                <p style="margin: 2px 0; font-size: 0.9rem;">
+                    <a href="tel:+917411073058" style="color: var(--dark-text);">+91 XXXXX XXX58</a>
+                </p>
+                <p style="margin: 2px 0; font-size: 0.9rem;"><a href="mailto:SAHHA@gmail.com" style="color: var(--dark-text);">naveen@sahha.in</a></p>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-end">
+                <ul style="list-style: none; padding: 0; margin: 0; display: inline-flex; gap: 15px;">
+                    <li>
+                        <a href="https://wa.me/+917411073058" target="_blank" style="color: var(--dark-text);"><i class="fab fa-whatsapp" style="font-size: 28px;"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" style="color: var(--dark-text);"><i class="fab fa-linkedin" style="font-size: 28px;"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <a href="#" id="back-to-top" style="position: fixed; bottom: 20px; right: 20px; z-index: 99; display: none; align-items: center; justify-content: center; width: 45px; height: 45px; background-color: var(--primary-color); color: white; border-radius: 50%; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); text-decoration: none; font-size: 1.2rem;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <div class="footer-credit">
+        <p style="margin: 0; font-size: 0.75rem; color: #777;">Designed to inspire by <strong  style="color: #333333;">Vishal</strong> .</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZmhD+lH2D8h/tQd7wLhWb0e9vE4Ff3X5u9S0e4Bv6L3t2pX0J" crossorigin="anonymous"></script>
+    <script>
+        // Back-to-Top button logic
+        window.onscroll = function() {
+            var backToTopBtn = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        document.getElementById("back-to-top").addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
