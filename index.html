@@ -539,13 +539,13 @@
         function sendWhatsAppMessage() {
             // Get input values
             const fullName = document.getElementById("fullName").value.trim();
-            const phoneNumber = document.getElementById("phoneNumber").value.trim();
+            const uphoneNumber = document.getElementById("phoneNumber").value.trim();
             const email = document.getElementById("email").value.trim();
             const subject = document.getElementById("subject").value.trim();
             const message = document.getElementById("message").value.trim();
 
             // Validate fields
-            if (!fullName || !phoneNumber || !email || !subject) {
+            if (!fullName || !uphoneNumber || !email || !subject) {
                 alert("Please fill in all required fields (Name, Phone, Email, Project Type).");
                 return;
             }
@@ -553,7 +553,7 @@
             // Construct the WhatsApp message
             const whatsappMessage = `Hello SAHHA! New consultation request from your website:\n\n` +
                 `*Name:* ${fullName}\n` +
-                `*Phone Number:* ${phoneNumber}\n` +
+                `*Phone Number:* ${uphoneNumber}\n` +
                 `*Email:* ${email}\n` +
                 `*Project Type:* ${subject || "N/A"}\n` +
                 `*Details:* ${message || "N/A"}`;
