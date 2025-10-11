@@ -175,6 +175,17 @@
                 margin-right: 0;
                 justify-content: flex-start !important;
             }
+            .project-scroll-wrapper::-webkit-scrollbar {
+                display: none;
+                width: 0 !important; /* Ensures the space the scrollbar occupies is also hidden */
+                height: 0 !important;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            .project-scroll-wrapper {
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
 
             /* General Responsive Styles */
             @media (min-width: 993px) {
@@ -298,7 +309,7 @@
         </nav>
 
         <div class="hero-section" style="width: 100%; /*height:45vh; min-height: 700px;*/ display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
-                <img src="imgSrc/Cover_DhanyashreeRajankunte.jpg" 
+                <img src="imgSrc/cover.jpg" 
                 alt="SAHHA Hero Image" 
                 style="width: 100%; height: auto;object-fit: cover;">
                     <div class="hero-text">
@@ -448,13 +459,6 @@
                                 <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Residential Villa</span>
                             </div>
                         </a>
-                        <a href="all-projects.html#restaurants" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
-                        style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
-                            <img src="imgSrc/Restaurants/Babai Restaurant Kurnool.jpg" alt="Project 2" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.3s;">
-                                <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Restaurant</span>
-                            </div>
-                        </a>
                         <a href="all-projects.html#commercial-complexes" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
                         style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
                             <img src="imgSrc/Commercial/Commercial Sadashiv Mudinapalya.jpg" alt="Project 2" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
@@ -469,6 +473,28 @@
                                 <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Interior Design</span>
                             </div>
                         </a>
+                        <a href="all-projects.html#apartments" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
+                        style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
+                            <img src="imgSrc/Apartment/Apartment SK Electronic city.jpg" alt="Project 2" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.3s;">
+                                <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Apartment</span>
+                            </div>
+                        </a>
+                        <a href="all-projects.html#restaurants" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
+                        style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
+                            <img src="imgSrc/Restaurants/Babai Restaurant Kurnool.jpg" alt="Project 2" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.3s;">
+                                <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Restaurant</span>
+                            </div>
+                        </a>
+                        <a href="all-projects.html#hospitals" class="col-lg-3 col-md-4 col-sm-6 mb-4" 
+                        style="position: relative; flex-shrink: 0; width: 280px; margin: 0 10px 20px; padding: 0; display: block;">
+                            <img src="imgSrc/Hospital/Hospital RS Reddy Kurnool.jpg" alt="Project 2" style="width: 100%; height: 250px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.3s;">
+                                <span style="color: white; font-weight: 600; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);">Hospital</span>
+                            </div>
+                        </a>
+
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 20px;">
@@ -519,7 +545,7 @@
                     <img src="imgSrc/logo.jpg" alt="SAHHA Logo" width="150" height="50" style="margin-bottom: 5px; border-radius: 50%;">
 
                     <p style="margin: 2px 0; font-size: 0.9rem;">
-                        <a href="https://maps.app.goo.gl/e7VaZBys66siFeZ57" target="_blank" style="color: var(--dark-text);">
+                        <a href="https://maps.app.goo.gl/xrM7mbUC3sjH1pHp9" target="_blank" style="color: var(--dark-text);">
                             <i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 5px;"></i> 
                             2399/A, Muddinapalya Main Rd,
                         <br>Opp. HP Petrol Bunk, Gidada Konnenahalli,
