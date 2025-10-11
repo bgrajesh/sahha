@@ -31,6 +31,7 @@
             background-color: #fff;
             font-family: 'Montserrat', sans-serif;
             color: var(--dark-text);
+            zoom: 0.8; 
         }
 
         /* Navbar Adjustments */
@@ -57,6 +58,9 @@
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* ⭐️ NEW: Use Flexbox to stack image and title ⭐️ */
+            display: flex; 
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -66,32 +70,26 @@
         .project-card img {
             width: 100%;
             height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
+            object-fit: contain;
+            /* ⭐️ NEW: Rounded corners on top only for image ⭐️ */
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
 
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-            transition: opacity 0.3s;
-        }
+        /* ⭐️ REMOVED: .project-overlay CSS (to eliminate dimming) ⭐️ */
+        /* If you wanted to keep the transition effect for the whole card, the overlay should be removed */
 
         .project-title {
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            color: var(--dark-text); /* Black/Dark text color */
+            background-color: var(--light-bg); /* White background */
+            font-size: 1.1rem;
             text-align: center;
-            padding: 0 10px;
+            font-weight: 600;
+            padding: 10px 15px; 
+            text-shadow: none; /* Remove text shadow */
+            /* ⭐️ NEW: Rounded corners on bottom only for title ⭐️ */
+            border-bottom-left-radius: 8px; 
+            border-bottom-right-radius: 8px;
         }
 
         /* Contact Badge */
@@ -101,6 +99,7 @@
         }
         
         .footer-credit {
+            position: absolute; /* Added position: absolute to honor bottom/right attributes */
             bottom: 20px;
             right: 10px;
             font-size: 0.75rem;
@@ -108,6 +107,25 @@
             z-index: 1000;
             font-weight: 500;
             font-family: 'Montserrat', sans-serif; /* Use a loaded font */
+        }
+        /* Adjustments for carousel images within project cards */
+        .project-card .carousel-item img {
+            height: 250px; /* Maintain the same height as single project images */
+            object-fit: contain;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        /* Style for carousel controls to make them more visible */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            border-radius: 50%; /* Make them round */
+            padding: 10px;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 15%; /* Reduce default width to avoid overlapping content */
         }
 
         /* General Responsive Styles */
@@ -171,235 +189,592 @@
 
     <div class="container mb-5">
         <section class="mb-5" id="residential-villas">
-            <h2 class="category-title">Residential Villas</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/Villa Ramchandra Eagleton.jpg" alt="Residential Villa Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Villa Ramchandra - Eagleton</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/Villa Narasimha Swisstown.jpg" alt="Residential Villa Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Villa Narasimha - Swisstown</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/Residence Abhishek Bellary.jpg" alt="Residential Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Residence Abhishek - Bellary</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/Residence Vijay Kalyan ngr.jpg" alt="Residential Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Residence Vijay - Kalyan Nagar</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/Residence Satish BSK.jpg" alt="Residential Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Residence Satish - BSK</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/Residence Manjunath Tataguni.jpg" alt="Residential Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Residence Manjunath - Tataguni</div>
-                        </div>
-                    </div>
+            <div style="display: flex; justify-content: left; flex-wrap: wrap; margin-bottom: 30px;">
+                <h2 class="category-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none; display: inline-block;">
+                    Residential
+                </h2>
+
+                <a href="https://www.youtube.com/embed/JNpSF0YQqCk?autohide=1&autoplay=1&mute=0&controls=0&disablekb=1&fs=0&loop=1&rel=0&showinfo=0&modestbranding=1" 
+                    target="_blank" 
+                    style="background-color: var(--primary-color); 
+                            color: white; 
+                            padding: 12px 10px; 
+                            border-radius: 50px; 
+                            text-decoration: none; 
+                            font-weight: 800; /* Slightly lighter weight */
+                            font-size: 0.65rem; /* ⭐️ SMALLER FONT SIZE ⭐️ */
+                            transition: background-color 0.3s;
+                            margin-left: 10px; 
+                            "
+                    class="video-button-mobile-fix"
+                    onmouseover="this.style.backgroundColor='transparent'; this.style.color='var(--primary-color)';"
+                    onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.color='var(--light-bg)';">
+                    <i class="fas fa-video me-1"></i> View Video
+                </a>
+                <div style="border-bottom: 2px solid var(--primary-color); 
+                            width: 100%; /* Ensure it spans the full container width */
+                            margin-top: 10px; 
+                            margin-bottom: 10px;">
                 </div>
             </div>
-        </section>
-
-        <section class="mb-5" id="restaurants">
-            <h2 class="category-title">Restaurants</h2>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/Babai Restaurant Kurnool.jpg" alt="Restaurant Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Babai Restaurant - Kurnool</div>
-                        </div>
+                        <img src="imgSrc/Residential/Dhanyashree Rajankunte.jpg" alt="Dhanyashree Rajankunte Project">
+                        <div class="project-title">Dhanyashree - Rajankunte</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/Amaravathi restaurant.jpeg" alt="Restaurant Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Amaravathi Restaurant</div>
-                        </div>
+                        <img src="imgSrc/Residential/Residence  Dr.Girish Basveshwar ngr.jpg" alt="Residence Dr.Girish Basveshwar Nagar Project">
+                        <div class="project-title">Residence Dr.Girish - Basveshwar Nagar</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/interiors/Restaurant Amaravathi 1.jpg" alt="Restaurant Interior">
-                        <div class="project-overlay">
-                            <div class="project-title">Amaravathi Restaurant Interior</div>
-                        </div>
+                        <img src="imgSrc/Residential/Residence Abhishek Bellary.jpg" alt="Residence Abhishek Bellary Project">
+                        <div class="project-title">Residence Abhishek - Bellary</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Karimoon Kurnool.jpg" alt="Residence Karimoon Kurnool Project">
+                        <div class="project-title">Residence Karimoon - Kurnool</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Karthk Kurnool.jpg" alt="Residence Karthik Kurnool Project">
+                        <div class="project-title">Residence Karthik - Kurnool</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Kishore Kurnool.png" alt="Residence Kishore Kurnool Project" loading="lazy">
+                        <div class="project-title">Residence Kishore - Kurnool</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Malikarjun Kurnool.jpg" alt="Residence Mallikarjun Kurnool Project">
+                        <div class="project-title">Residence Mallikarjun - Kurnool</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Manju Tataguni.jpeg" alt="Residence Manju Tataguni Project">
+                        <div class="project-title">Residence Manju - Tataguni</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Manjunath Tataguni.jpg" alt="Residence Manjunath Tataguni Project">
+                        <div class="project-title">Residence Manjunath - Tataguni</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Murali  Kurnool.jpg" alt="Residence Murali Kurnool Project">
+                        <div class="project-title">Residence Murali - Kurnool</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Nagaraj Kurnool.jpg" alt="Residence Nagaraj Kurnool Project">
+                        <div class="project-title">Residence Nagaraj - Kurnool</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Nagesh Kurnool.png" alt="Residence Nagesh Kurnool Project">
+                        <div class="project-title">Residence Nagesh - Kurnool</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Praveen Kurnool (2).jpg" alt="Residence Praveen Kurnool (2) Project">
+                        <div class="project-title">Residence Praveen - Kurnool (2)</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Praveen Kurnool.jpg" alt="Residence Praveen Kurnool Project">
+                        <div class="project-title">Residence Praveen - Kurnool</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Satish BSK.jpg" alt="Residence Satish BSK Project">
+                        <div class="project-title">Residence Satish - Banashankari</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Sheshapani Kurnool.jpg" alt="Residence Sheshapani Kurnool Project">
+                        <div class="project-title">Residence Sheshapani - Kurnool</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Subramanyam Nandyal.jpg" alt="Residence Subramanyam Nandyal Project">
+                        <div class="project-title">Residence Subramanyam - Nandyal</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Residence Vijay Kalyan ngr.jpg" alt="Residence Vijay Kalyan Nagar Project">
+                        <div class="project-title">Residence Vijay - Kalyan Nagar</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Villa Narasimha Swisstown.jpg" alt="Villa Narasimha Swisstown Project">
+                        <div class="project-title">Villa Narasimha - Swisstown</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Residential/Villa Ramchandra Eagleton.jpg" alt="Villa Ramchandra Eagleton Project">
+                        <div class="project-title">Villa Ramchandra -Eagleton</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="mb-5" id="commercial-complexes">
-            <h2 class="category-title">Commercial Complexes</h2>
+            <div style="display: flex; justify-content: left; flex-wrap: wrap; margin-bottom: 30px;">
+                <h2 class="category-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none; display: inline-block;">
+                    Commercial Complexes
+                </h2>
+
+                <a href="https://www.youtube.com/embed/dBolb1UPcUw?autohide=1&autoplay=1&mute=0&controls=0&disablekb=1&fs=0&loop=1&rel=0&showinfo=0&modestbranding=1" 
+                    target="_blank" 
+                    style="background-color: var(--primary-color); 
+                            color: white; 
+                            padding: 12px 10px; 
+                            border-radius: 50px; 
+                            text-decoration: none; 
+                            font-weight: 800; /* Slightly lighter weight */
+                            font-size: 0.65rem; /* ⭐️ SMALLER FONT SIZE ⭐️ */
+                            transition: background-color 0.3s;
+                            margin-left: 10px; 
+                            "
+                    class="video-button-mobile-fix"
+                    onmouseover="this.style.backgroundColor='transparent'; this.style.color='var(--primary-color)';"
+                    onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.color='var(--light-bg)';">
+                    <i class="fas fa-video me-1"></i> View Video
+                </a>
+                <div style="border-bottom: 2px solid var(--primary-color); 
+                            width: 100%; /* Ensure it spans the full container width */
+                            margin-top: 10px; 
+                            margin-bottom: 10px;">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/Commercial Sadashiv Mudinapalya.jpg" alt="Commercial Complex Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Commercial Complex - Sadashiv Mudinapalya</div>
-                        </div>
+                        <img src="imgSrc/Commercial/Commercial Sadashiv Mudinapalya.jpg" alt="Commercial Sadashiv Mudinapalya Project">
+                        <div class="project-title">Commercial Sadashiv - Mudinapalya</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/Commercial space Ramesh Balehonnur.jpg" alt="Commercial Space Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Commercial Space - Ramesh Balehonnur</div>
-                        </div>
+                        <img src="imgSrc/Commercial/Commercial space Ramesh Balehonnur.jpg" alt="Commercial space Ramesh Balehonnur Project">
+                        <div class="project-title">Commercial Space Ramesh - Balehonnur</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/Hospital RS Reddy Kurnool.jpg" alt="Hospital Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Hospital - RS Reddy Kurnool</div>
-                        </div>
+                        <img src="imgSrc/Commercial/Mixed use space Selladurrai Basveshwar ngr.jpg" alt="Mixed use space Selladurrai Basveshwar ngr Project">
+                        <div class="project-title">Mixed Use Space Selladurrai - Basveshwar Nagar</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/Mixed use space Selladurrai Basveshwar ngr.jpg" alt="Mixed Use Space Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Mixed Use Space - Selladurrai Basveshwar Nagar</div>
-                        </div>
+                        <img src="imgSrc/Commercial/Mixed use space Viswa Kurnool.jpg" alt="Mixed use space Viswa Kurnool Project">
+                        <div class="project-title">Mixed Use Space Viswa - Kurnool</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/Mixed use space Viswa Kurnool.jpg" alt="Mixed Use Space Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Mixed Use Space - Viswa Kurnool</div>
+                        <img src="imgSrc/Commercial/Mized use space Murthy Bilekali.jpg" alt="Mixed use space Murthy Bilekali Project">
+                        <div class="project-title">Mixed Use Space Murthy - Bilekali</div>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section class="mb-5" id="interior-design">
+            <div style="display: flex; justify-content: left; flex-wrap: wrap; margin-bottom: 30px;">
+                <h2 class="category-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none; display: inline-block;">
+                    Interior Design
+                </h2>
+
+                <a href="https://www.youtube.com/embed/A9Y6xSWdS80?autohide=1&autoplay=1&mute=0&controls=0&disablekb=1&fs=0&loop=1&rel=0&showinfo=0&modestbranding=1" 
+                    target="_blank" 
+                    style="background-color: var(--primary-color); 
+                            color: white; 
+                            padding: 12px 10px; 
+                            border-radius: 50px; 
+                            text-decoration: none; 
+                            font-weight: 800; /* Slightly lighter weight */
+                            font-size: 0.65rem; /* ⭐️ SMALLER FONT SIZE ⭐️ */
+                            transition: background-color 0.3s;
+                            margin-left: 10px; 
+                            "
+                    class="video-button-mobile-fix"
+                    onmouseover="this.style.backgroundColor='transparent'; this.style.color='var(--primary-color)';"
+                    onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.color='var(--light-bg)';">
+                    <i class="fas fa-video me-1"></i> View Video
+                </a>
+                <div style="border-bottom: 2px solid var(--primary-color); 
+                            width: 100%; /* Ensure it spans the full container width */
+                            margin-top: 10px; 
+                            margin-bottom: 10px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <div id="carouselAmaravathi" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="imgSrc/Interiors/Restaurant Amaravathi 1 (1).jpg" class="d-block w-100" alt="Restaurant Amaravathi 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="imgSrc/Interiors/Amaravathi Restaurant 2.jpg" class="d-block w-100" alt="Restaurant Amaravathi">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselAmaravathi" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselAmaravathi" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
+                        <div class="project-title">Restaurant Amaravathi</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <div id="carouselBabaiRestaurant" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="imgSrc/Interiors/Babai Restaurant (1).jpeg" class="d-block w-100" alt="Babai Restaurant 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="imgSrc/Interiors/Babai Restaurant (2).jpeg" class="d-block w-100" alt="Babai Restaurant 2">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBabaiRestaurant" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselBabaiRestaurant" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="project-title">Babai Restaurant</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Interiors/Mallikarjun residence Living.jpg" alt="Mallikarjun residence Living Project">
+                        <div class="project-title">Mallikarjun Residence Living</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Interiors/Residence Sheshapani MBR.jpg" alt="Residence Sheshapani MBR Project">
+                        <div class="project-title">Residence Sheshapani MBR</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Interiors/Viswanth Living Kurnool.jpg" alt="Viswanth Living Kurnool Project">
+                        <div class="project-title">Viswanth Living - Kurnool</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <div id="carouselYelukuruCabin" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="imgSrc/Interiors/Yelukuru MD cabin (1).jpg" class="d-block w-100" alt="Yelukuru MD Cabin 1">
+                                </div>
+                                </div>
+                            </div>
+                        <div class="project-title">Yelukuru MD Cabin</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <div id="carouselYelukuruShowroom" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="imgSrc/Interiors/Yelukuru Showroom (1).jpg" class="d-block w-100" alt="Yelukuru Showroom 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="imgSrc/Interiors/Yelukuru Showroom (2).jpg" class="d-block w-100" alt="Yelukuru Showroom 2">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselYelukuruShowroom" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselYelukuruShowroom" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="project-title">Yelukuru Showroom</div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="mb-5" id="apartments">
+            <div style="display: flex; justify-content: left; align-items: center; flex-wrap: wrap;">
+                <h2 class="category-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none; display: inline-block;">
+                    Apartments
+                </h2>
+
+                <a href="https://www.youtube.com/embed/ONshdWK0ZnU?autohide=1&autoplay=1&mute=0&controls=0&disablekb=1&fs=0&loop=1&rel=0&showinfo=0&modestbranding=1" 
+                    target="_blank" 
+                    style="background-color: var(--primary-color); 
+                            color: white; 
+                            padding: 12px 10px; 
+                            border-radius: 50px; 
+                            text-decoration: none; 
+                            font-weight: 800; 
+                            font-size: 0.65rem;
+                            transition: background-color 0.3s;
+                            margin-left: 10px;"
+                    class="video-button-mobile-fix"
+                    onmouseover="this.style.backgroundColor='transparent'; this.style.color='var(--primary-color)';"
+                    onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.color='var(--light-bg)';">
+                    <i class="fas fa-video me-1"></i> View Video
+                </a>
+            </div>
+            
+            <div style="border-bottom: 2px solid var(--primary-color); 
+                        width: 100%; 
+                        margin-top: 10px; 
+                        margin-bottom: 30px;">
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Apartment/Apartment Bilekali.jpg" alt="Apartment Bilekali Project">
+                        <div class="project-title">Bilekali</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/Mized use space Murthy Bilekali.jpg" alt="Mixed Use Space Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Mixed Use Space - Murthy Bilekali</div>
-                        </div>
+                        <img src="imgSrc/Apartment/Apartment Boopsandra.jpg" alt="Apartment Boopsandra Project">
+                        <div class="project-title">Boopsandra</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Apartment/Apartment Manyata.jpg" alt="Apartment Manyata Project">
+                        <div class="project-title">Manyata</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Apartment/Apartment Prashanth Kurnool.jpg" alt="Apartment Prashanth Kurnool Project">
+                        <div class="project-title">Prashanth - Kurnool</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Apartment/Apartment SK Electronic city.jpg" alt="Apartment SK Electronic city Project">
+                        <div class="project-title">SK - Electronic City</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <img src="imgSrc/Apartment/Arjun service apartment Jakkur.jpg" alt="Arjun service apartment Jakkur Project">
+                        <div class="project-title">Arjun Service Apartment - Jakkur</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-5" id="interior-design">
-            <h2 class="category-title">Interior Design</h2>
+        <section class="mb-5" id="restaurants">
+            <div style="display: flex; justify-content: left; flex-wrap: wrap; margin-bottom: 30px;">
+                <h2 class="category-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none; display: inline-block;">
+                    Restaurants
+                </h2>
+                <div style="border-bottom: 2px solid var(--primary-color); 
+                            width: 100%; /* Ensure it spans the full container width */
+                            margin-top: 10px; 
+                            margin-bottom: 10px;">
+                </div>
+            </div> 
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <div id="carouselBabaiRest" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="imgSrc/Restaurants/Babai Restaurant Kurnool.jpg" class="d-block w-100" alt="Babai Restaurant Exterior">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="imgSrc/interiors/Babai Restaurant (1).jpeg" class="d-block w-100" alt="Babai Restaurant Interior 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="imgSrc/interiors/Babai Restaurant (2).jpeg" class="d-block w-100" alt="Babai Restaurant Interior 2">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBabaiRest" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselBabaiRest" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="project-title">Babai Restaurant - Kurnool</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-card">
+                        <div id="carouselAmaravathiRest" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="imgSrc/Restaurants/Amaravathi restaurant.jpeg" class="d-block w-100" alt="Amaravathi Restaurant Exterior">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="imgSrc/interiors/Restaurant Amaravathi 1 (1).jpg" class="d-block w-100" alt="Restaurant Amaravathi Interior 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="imgSrc/interiors/Restaurant Amaravathi 1.jpg" class="d-block w-100" alt="Restaurant Amaravathi Interior 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="imgSrc/interior/Amaravathi Restaurant 2.jpg" class="d-block w-100" alt="Amaravathi Restaurant Interior 3">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselAmaravathiRest" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselAmaravathiRest" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="project-title">Amaravathi Restaurant</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" id="hospitals">
+            <div style="display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap;">
+                <h2 class="category-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none; display: inline-block;">
+                    Hospitals
+                </h2>
+
+                <a href="https://www.youtube.com/embed/CqUj15yiLeM?autohide=1&autoplay=1&mute=0&controls=0&disablekb=1&fs=0&loop=1&rel=0&showinfo=0&modestbranding=1" 
+                    target="_blank" 
+                    style="background-color: var(--primary-color); 
+                            color: white; 
+                            padding: 12px 10px; 
+                            border-radius: 50px; 
+                            text-decoration: none; 
+                            font-weight: 800; 
+                            font-size: 0.65rem;
+                            transition: background-color 0.3s;
+                            margin-left: 10px;"
+                    class="video-button-mobile-fix"
+                    onmouseover="this.style.backgroundColor='transparent'; this.style.color='var(--primary-color)';"
+                    onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.color='var(--light-bg)';">
+                    <i class="fas fa-video me-1"></i> View Video
+                </a>
+                <div style="border-bottom: 2px solid var(--primary-color); 
+                            width: 100%; /* Ensure it spans the full container width */
+                            margin-top: 10px; 
+                            margin-bottom: 30px;">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="project-card">
-                        <img src="imgSrc/interiors/Mallikarjun residence Living.jpg" alt="Interior Design Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Mallikarjun Residence - Living Room</div>
-                        </div>
+                        <img src="imgSrc/Hospital/Hospital RS Reddy Kurnool.jpg" alt="Hospital Project">
+                        <div class="project-title">RS Reddy Hospital - Kurnool</div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/interiors/Viswanth Living Kurnool.jpg" alt="Interior Design Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Viswanath Living - Kurnool</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/interiors/Residence Sheshapani MBR.jpg" alt="Interior Design Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Residence Sheshapani - Master Bedroom</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/interiors/Yelukuru Showroom (1).jpg" alt="Interior Design Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Yelukuru Showroom</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/interiors/Yelukuru Showroom (2).jpg" alt="Interior Design Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Yelukuru Showroom - Display Area</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="project-card">
-                        <img src="imgSrc/interiors/Yelukuru MD cabin (1).jpg" alt="Interior Design Project">
-                        <div class="project-overlay">
-                            <div class="project-title">Yelukuru MD Cabin</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     </div>
 
     <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center border-top" style="padding: 1.5rem 0rem 1.5rem 0rem !important;">
-            <div class="col-md-4 d-flex justify-content-start">
-                <p style="margin: 0; font-size: 0.85rem; color: #555;">© 2025 SAHHA. All rights reserved.</p>
-            </div>
+            <footer class="d-flex flex-wrap justify-content-between align-items-center border-top" style="padding: 1.5rem 0rem 1.5rem 0rem !important;">
+                
+                <div class="col-md-4 col-12 d-flex justify-content-center justify-content-md-start">
+                    <p style="margin: 0.8rem 0rem; font-size: 0.85rem; color: #555;">© 2025 SAHHA. All rights reserved.</p>
+                </div>
 
-            <div class="col-md-4 text-center">
-                <img src="imgSrc/logo.jpg" alt="SAHHA Logo" width="150" height="50" style="margin-bottom: 5px; border-radius: 50%;">
-                <p style="margin: 2px 0; font-size: 0.9rem;"><a href="https://maps.app.goo.gl/e7VaZBys66siFeZ57" target="_blank" style="color: var(--dark-text);"><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> Bangalore, India</a></p>
-                <p style="margin: 2px 0; font-size: 0.9rem;">
-                    <a href="tel:+917411073058" style="color: var(--dark-text);">+91 9448783075</a>
-                </p>
-                <p style="margin: 2px 0; font-size: 0.9rem;"><a href="mailto:SAHHA@gmail.com" style="color: var(--dark-text);">naveen@sahha.in</a></p>
-            </div>
+                <div class="col-md-4 col-12 text-center">
+                    <img src="imgSrc/logo.jpg" alt="SAHHA Logo" width="150" height="50" style="margin-bottom: 5px; border-radius: 50%;">
 
-            <div class="col-md-4 d-flex justify-content-end">
-                <ul style="list-style: none; padding: 0; margin: 0; display: inline-flex; gap: 15px;">
-                    <li>
-                        <a href="https://www.instagram.com/sahhaarchitects/" target="_blank" style="color: var(--dark-text);"><i class="fab fa-instagram" style="font-size: 28px;"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://wa.me/+919448783075" target="_blank" style="color: var(--dark-text);"><i class="fab fa-whatsapp" style="font-size: 28px;"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/" target="_blank" style="color: var(--dark-text);"><i class="fab fa-linkedin" style="font-size: 28px;"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
+                    <p style="margin: 2px 0; font-size: 0.9rem;">
+                        <a href="https://maps.app.goo.gl/e7VaZBys66siFeZ57" target="_blank" style="color: var(--dark-text);">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 5px;"></i> 
+                            2399/A, Muddinapalya Main Rd,
+                        <br>Opp. HP Petrol Bunk, Gidada Konnenahalli,
+                        <br>Annapurneshwari Nagar,
+                        <br>Bengaluru, Karnataka 560091, BH
+                        </a>
+                    </p>
+
+                    <p style="margin: 2px 0; font-size: 0.9rem;">
+                        <a href="tel:+917411073058" style="color: var(--dark-text);">+91 9448783075</a>
+                    </p>
+                    <p style="margin: 16px 0px; font-size: 0.9rem;"><a href="mailto:SAHHA@gmail.com" style="color: var(--dark-text);">Naveen@sahha.in</a></p>
+                </div>
+
+                <div class="col-md-4 col-12 d-flex justify-content-center justify-content-md-end">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: inline-flex; gap: 15px;">
+                        <li>
+                            <a href="https://www.instagram.com/sahhaarchitects/" target="_blank" style="color: var(--dark-text);"><i class="fab fa-instagram" style="font-size: 28px;"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/+919448783075" target="_blank" style="color: var(--dark-text);"><i class="fab fa-whatsapp" style="font-size: 28px;"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/embed/xrP4lXDNZmw?autohide=1&autoplay=1&mute=0&controls=0&disablekb=1&fs=0&loop=1&rel=0&showinfo=0&modestbranding=1" target="_blank" style="color: var(--dark-text);"><i class="fab fa-youtube" style="font-size: 28px;"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
     </div>
+
     <a href="#" id="back-to-top" style="position: fixed; bottom: 20px; right: 20px; z-index: 99; display: none; align-items: center; justify-content: center; width: 45px; height: 45px; background-color: var(--primary-color); color: white; border-radius: 50%; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); text-decoration: none; font-size: 1.2rem;">
         <i class="fas fa-arrow-up"></i>
     </a>
     
-    <div class="footer-credit">
-        <p style="margin: 0; font-size: 0.75rem; color: #777;">Designed to inspire by <strong  style="color: #333333;">Vishal</strong> .</p>
-    </div>
+    <!--<div class="footer-credit">
+        <p style="margin: 0; font-size: 0.75rem; color: #777;">Designed to inspire by <strong style="color: #333333;">Vishal</strong> .</p>
+    </div>-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZmhD+lH2D8h/tQd7wLhWb0e9vE4Ff3X5u9S0e4Bv6L3t2pX0J" crossorigin="anonymous"></script>
     <script>
@@ -418,6 +793,7 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
     </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
